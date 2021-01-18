@@ -38,39 +38,91 @@ $('#submitBtn').click(function(event){
         location.uvi = cityUvi;
         location.stats.push(cityUvi);
         console.log(location)
+        $.ajax({
+
+            url : 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=a05dd46eb02a5b52d207449c4ec0ce0b&units=imperial&exclude=minutely,current,hourly,alerts',
+
+            type : 'GET',
+        }).then(function(response2){
+            console.log(response2)
+            var fivedayTempArr = [];
+            var fivedayHumidArr = [];
+            for(var z = 0; z < 5; z++){
+               var fiveDayTemp = response2.daily[z].temp.day;
+               var fivedayHumid = response2.daily[z].humidity;
+               var fivedayIcon = response2.daily[z].weather[0].icon
+
+               fivedayTempArr.push(fiveDayTemp)
+               fivedayHumidArr.push(fivedayHumid)
+             
+            }
+            var fivedayForecast = {temp: fivedayTempArr, humidity: fivedayHumidArr, icon: fivedayIcon}
+            weather.push(fivedayForecast)
+            console.log(weather)
+            console.log(fivedayHumidArr);
+
+
+                var newH5 = $('<h5>').addClass('card-title')
+                newH5.text(weather[0].name)
+
+                $('#mainCard').append(newH5)
+
+                for(var j = 0; j < 4; j++){
+                    var newP = $('<p>').addClass('card-text')
+
+                    newP.text(weather[0].statNames[j+1] + weather[0].stats[j]);
+                    $('#mainCard').append(newP);
+                }
+                
         
-    }) 
+                for(var i =0; i < 5; i++){
+                  
+                    var newCard = $('<div>').addClass('card')
+                    $('#5days').append(newCard);
+                    var newCardBody = $('<div>').addClass('card-body');
+                    newCard.append(newCardBody);
+                    
+                    var newH6 = $('<h5>').addClass('card-title')
+                    newH6.text('date')
+                    newCardBody.append(newH6)
+                    
+                        var newP = $('<p>').addClass('card-text')
+                        newP.text(weather[1].temp[i] + 'F')
+                        newCardBody.append(newP);
+
+                        
+
+                        var newP2 = $('<p>').addClass('card-text')
+                        newP2.text(weather[1].humidity[i]+ '%')
+                        newCardBody.append(newP2)
+                        
+                    
+                   
+                   
+
+                    
+
+                }
+                
+                console.log(weather[1])
+                
+                
+                
+
+                    
+    
+                
+
+
+            
+        });
+        
+        
     })
+})
     
-    $.ajax({
-        //5 day 3 hour forecast api
-        url: 'https://api.openweathermap.org/data/2.5/forecast?q='+ city[0] + ',' + city[1] + ',US&appid=a05dd46eb02a5b52d207449c4ec0ce0b',
-        type : 'GET',
-    }).then(function(response2){
-        console.log(weather[0].name)
-        var newH5 = $('<h5>').addClass('card-title')
-        newH5.text(weather[0].name)
-        $('#mainCard').append(newH5)
-        console.log(location)
-        for(var i = 0; i < 4; i++){
-            var newP = $('<p>').addClass('card-text')
-            console.log(weather[0].statNames)
-            console.log(weather[0].stats)
-            newP.text(weather[0].statNames[i+1] + weather[0].stats[i]);
-            $('#mainCard').append(newP);
-        }
-        
-
-
-        // $('#currentCardCity').text(weather[0].name)
-        // $('#currentCardHumidity').text(weather[0].humidity)
-        // $('#currentCardUvi').text
-        
+   
     
-    });
-    
-    
-
 })
 
 
