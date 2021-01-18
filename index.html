@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
         <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search for a City" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search i.e (Cary NC)" aria-label="Search" id="citysearch">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="submitBtn">Search</button>
           </form>
       </nav>
     <div class="row">
@@ -26,12 +27,12 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">City name</h5>
-                            <p class="card-text">Tempeture:</p>
-                            <p class="card-text">Humidity:</p>
-                            <p class="card-text">Wind Speed:</p>
-                            <p class="card-text">UV Index:</p>
+                        <div class="card-body" id="mainCard">
+                            <!-- <h5 class="card-title" id="currentCardCity">hello</h5>
+                            <p class="card-text" id="currentCityTemp">Tempeture:</p>
+                            <p class="card-text" id="currentCityHumidity">Humidity:</p>
+                            <p class="card-text" id="currentCityWindspeed">Wind Speed:</p>
+                            <p class="card-text" id="currentCityUvi">UV Index:</p> -->
                           
                         </div>
                       </div>
@@ -97,7 +98,7 @@
                   <div class="carousel-item">
                     <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title">City name</h5>
+                          <h5 class="card-title"></h5>
                             <p class="card-text">Tempeture:</p>
                             <p class="card-text">Humidity:</p>
                             <p class="card-text">Wind Speed:</p>
@@ -168,7 +169,7 @@
                   <div class="carousel-item">
                     <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title">City name</h5>
+                          <h5 class="card-title"></h5>
                             <p class="card-text">Tempeture:</p>
                             <p class="card-text">Humidity:</p>
                             <p class="card-text">Wind Speed:</p>
@@ -259,10 +260,10 @@
               </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon@1.25.0/build/global/luxon.min.js"></script>
-    <script src="assets/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
