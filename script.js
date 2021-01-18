@@ -87,10 +87,8 @@ $('#submitBtn').click(function(event){
                     newCardBody.append(newH6)
                     
                         var newP = $('<p>').addClass('card-text')
-                        newP.text(weather[1].temp[i] + 'F')
+                        newP.text(weather[1].temp[i])
                         newCardBody.append(newP);
-
-                        
 
                         var newP2 = $('<p>').addClass('card-text')
                         newP2.text(weather[1].humidity[i]+ '%')
