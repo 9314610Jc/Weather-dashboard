@@ -1,17 +1,38 @@
 var weather = [];
+var recentSearches = [];
+
+function setLocalstorage(){
+    localStorage.setItem('recentSearches', recentSearches)
+}
 
 
+function getLocalStorage(){
+    var localStor = localStorage.getItem('recentSearches')
+    if (localStor === null){
+        return
+    }else{
+        return 
+    };
+};
+function strToArr(){
 
-
+}
 
 $('#submitBtn').click(function(event){
-    event.preventDefault();
+
+    
     var cityString = $('#citysearch').val();
     var city = cityString.split(',');
-    
-    // localStorage.setItem('city', city)
-    // console.log(city); 
+    recentSearches.push(cityString)
+    setLocalstorage();
 
+    
+
+    //localStorage.setItem('city', citystring)
+    // console.log(city); 
+    function buildMainCard(city){
+        
+    }
     $.ajax({
         //Current weather Data api
         url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city[0] + ',' + city[1] + ',US&appid=a05dd46eb02a5b52d207449c4ec0ce0b&units=imperial',
@@ -93,12 +114,6 @@ $('#submitBtn').click(function(event){
                         var newP2 = $('<p>').addClass('card-text')
                         newP2.text(weather[1].humidity[i]+ '%')
                         newCardBody.append(newP2)
-                        
-                    
-                   
-                   
-
-                    
 
                 }
                 
